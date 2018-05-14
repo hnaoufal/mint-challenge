@@ -3,14 +3,19 @@
 ### Downloading
 
 ```
-git clone https://github.com/hnaoufal/poll-app.git
+git clone https://github.com/hnaoufal/mint-challenge.git
 ```
 ### Installing
 
 ```
 npm install
 ```
-Please make sure you have installed NodeJS!
+### Testing
+
+```
+npm run test
+```
+Please make sure you have installed the newest version of NodeJS!
 
 ### Running The Project
 
@@ -21,38 +26,30 @@ Goto: http://localhost:8080
 
 ### Tools used
 
-- React + Redux + Redux Thunk
-- Webpack 2
+- React + Redux + Redux Saga
+- Webpack 3
+- React Selectors
 - React Router 4
-- MomentJS
-- Babel
+- D3.js (for own implementation of Graph)
+- eCharts (for easy implementation)
 
 ### Requirements
 
-1. Consume the JSON API - checked
-2. Build the following two views (Desktop and Mobile) - checked
-3. Add another view called "CREATE" where a user can create a new question (POST) - checked
+All Requirements completed!
 
 ### BONUSES:
-- BONUS: You can Vote on Polls - checked
-- BONUS: You can create new Questions - checked
-- Clear field after send in new response - checked
-- Redirect to Main-Page (Poll-List) after new Poll/Question was created - checked
-- Fix percent-bug - checked
+- Implemented Tests
+- Own Implementation of Graph
+- NO UI-Library used
+- CSS_-MODULES and own Webpack Implementation
 
 ### Still missing
 
-- BONUS: Testing - still missing... I am going to add them next days
-- BONUS: PropTypes - still missing... I am going to add them next days
-- Convert CSS to SCSS and use BEM for naming - []
-- BONUS: Refactoring - it always can be done better =) in some Parts
+- Popover when Hovering on bubble ONLY in own Graph
 
 ### Coding Time
 
-Core-Features: < 60min - checked
-
-Webpack/Setting-up/API-Research/Documentation: 5h
-
-~6h for the whole project 
+~8h (d3 took most time (first time I used it)) for the whole project 
 
 Enjoy!
+
