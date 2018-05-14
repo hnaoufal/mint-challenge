@@ -33,7 +33,7 @@ class Liquid extends Component {
         name: next.name,
         marketCap: next.quotes.USD.market_cap,
         volume: next.quotes.USD.volume_24h,
-        priceChange: next.quotes.USD.price,
+        priceChange: next.quotes.USD.percent_change_24h,
       });
 
       return a;

@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
 
+import styles from './BubbleChart.module.scss'
 
-class ProgressArc extends Component {
-  displayName: 'ProgressArc';
+
+class BubbleChart extends Component {
+  displayName: 'BubbleChart';
 
   propTypes: {
     id: PropTypes.string,
@@ -20,6 +22,8 @@ class ProgressArc extends Component {
     super(props);
     this.state = {
       values: props.values,
+      hoverState: false,
+      selectedValue: null,
     }
   }
 
@@ -33,6 +37,19 @@ class ProgressArc extends Component {
         values: nextProps.values,
       }, () => this.setContext())
     }
+  }
+
+  handleMouseOver = obj => {
+    this.setState({
+      hoverState: true,
+      selectedValue: obj,
+    })
+  }
+
+  handleMouseLeave = obj => {
+    this.setState({
+      hoverState: false,
+    });
   }
 
   setContext() {
@@ -59,8 +76,8 @@ class ProgressArc extends Component {
       .tickValues([values.volumeMin, 1500000000, 3000000000, 4500000000, 6000000000, values.volumeMax ]);
 
     const main = d3.select(this.refs.arc).append('svg')
-      .attr('height', 600)
-      .attr('width', 600)
+      .attr('height', 1000)
+      .attr('width', 1000)
       .attr('overflow', 'visible')
       .attr('id', id);
 
@@ -70,10 +87,19 @@ class ProgressArc extends Component {
       .append('circle')
       .attr('cy', d => -10 + y(d.volume))
       .attr('cx', d => 200 + x(d.marketCap))
-      .attr('r', d => d.priceChange / 100)
-      .style('fill', 'green')
+      .attr('r', d => Math.abs(d.priceChange) + 10)
+      .style('fill', d => {
+        if(d.priceChange < 0) {
+          return 'red';
+        } 
+          return 'green';
+      })
       .style('stroke', 'black')
-      .style('stroke-width', 2);
+      .style('stroke-width', 2)
+      .on('mouseover', this.handleMouseOver)
+      .on('mouseleave', this.handleMouseLeave)
+      .append('svg:title')
+      .text(d => `${d.name} - MarketCap: ${d.marketCap} - Volume: ${d.volume} - PriceChange: ${d.priceChange}`);
 
     main.append('text')
       .style('text-anchor', 'middle')
@@ -102,15 +128,29 @@ class ProgressArc extends Component {
   }
 
   render() {
+    const { hoverState, selectedValue } = this.state;
+
     if (this.props.values.values.length < 1) {
       return <div>Bitte auswaehlen</div>
     }
 
     return (
-      <div ref="arc" />
+      <div className={styles.base}>
+        <div className={styles.graph} ref="arc" />
+        <div className={styles.values}>
+          {hoverState && selectedValue &&
+            <div>
+              <div>Name: {selectedValue.name}</div>
+              <div>MarketCap: ${selectedValue.marketCap}</div>
+              <div>Volume: ${selectedValue.volume}</div>
+              <div>PriceChange: {selectedValue.priceChange}</div>
+            </div>
+          }
+        </div>
+      </div>
     )
   }
 }
 
-export default ProgressArc;
+export default BubbleChart;
 
