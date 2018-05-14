@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { makeTickerList } from 'bsc/selectors/coins.js';
 import * as d3 from 'd3';
 
-import ProgressArc from './Scatterplot/ProgressArc';
+import BubbleChart from './Scatterplot/BubbleChart';
 
 import styles from './Liquid.module.scss';
 
@@ -58,7 +58,7 @@ class Liquid extends Component {
 
     return (
       <div className={styles.base}>
-        <ProgressArc
+        <BubbleChart
           id="d3-arc"
           height={300}
           width={300}
