@@ -10,12 +10,14 @@ git clone https://github.com/hnaoufal/mint-challenge.git
 ```
 npm install
 ```
+Please make sure you have installed the newest version of NodeJS!
+
 ### Testing
 
 ```
 npm run test
 ```
-Please make sure you have installed the newest version of NodeJS!
+Please make sure to install JEST globally.
 
 ### Running The Project
 
@@ -28,29 +30,38 @@ Goto: http://localhost:8080
 
 - React + Redux + Redux Saga
 - Webpack 3
-- React Selectors
+- Reselect
 - React Router 4
 - D3.js (for own implementation of Graph)
-- eCharts (for easy implementation)
 
 ### Requirements
 
 All Requirements completed except responsive Style!
-If this is really necessary I can implement it also please drop me a mail.
+If this is really necessary I can implement it also please drop me a line per mail.
+(Its not really challenging to get it responsive but its too late now... =) )
 
 ### BONUSES:
 - Implemented Tests
 - Own Implementation of Graph
 - NO UI-Library used
-- CSS_-MODULES and own Webpack Implementation
+- CSS_-MODULES and own Webpack-Config
 
 ### Still missing
 
-- Popover when Hovering on bubble ONLY in own Graph
+- Responsive (but easy to implement tell me please if its important this should not be a blocker)
 
 ### Coding Time
 
-~8h (d3 took most time (first time I used it)) for the whole project 
+~9h (d3.js took most time (first time I used it)) for the whole project 
+
+### Some Docs about the Graph
+
+The Graphs doesn't look very great. I think the main part was to show the logic not design.
+The bubbles where entered Volume/MarketCap. The Size of the Bubbles represents the priceChange. 
+Red is negative, Green is positive. OnHover you see a tooltip (browser native) and I display a Text-Box where you can see
+the hovered information also.
+
+###
 
 Enjoy!
 
