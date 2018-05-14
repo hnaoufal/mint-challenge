@@ -1,4 +1,4 @@
-import { coinsActions } from 'act/actionTypes';
+import { coinsActions } from '../../sagas/actionTypes';
 
 const initialState = 'default';
 

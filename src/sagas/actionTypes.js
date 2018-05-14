@@ -1,4 +1,4 @@
-import { asyncCall, createActionTypes } from 'bsc/utils/actionUtils';
+import { asyncCall, createActionTypes } from '../utils/actionUtils';
 
 export const coinsActions = createActionTypes('coins', [
   'SET_COINS_SELECTOR',

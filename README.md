@@ -35,7 +35,8 @@ Goto: http://localhost:8080
 
 ### Requirements
 
-All Requirements completed!
+All Requirements completed except responsive Style!
+If this is really necessary I can implement it also please drop me a mail.
 
 ### BONUSES:
 - Implemented Tests
