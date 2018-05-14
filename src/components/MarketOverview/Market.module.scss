@@ -1,0 +1,68 @@
+.tableRow {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  &:nth-of-type(even) {
+    background-color: #f2f2f2;
+  }
+
+  &:nth-of-type(odd) {
+    background-color: #ffffff;
+  }
+
+  &:hover:not(:first-child) {
+    background-color: lightblue;
+  }
+
+  &:first-child {
+    font-weight: bold;
+    border-top: 1px solid lightgray;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: .8rem;
+  margin: 0.5rem;
+  line-height: 1.5;
+  border-bottom: 1px solid #d0d0d0;
+  flex: 1 1 auto;
+}
+
+.column {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0.5em;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid lightgray;
+}
+
+.base {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 50px;
+  padding-top: 50px;
+}
+
+.tableBody {
+  max-height: 70vh;
+  overflow: scroll;
+}
+
+.emptyView {
+  padding-top: 70px;
+}

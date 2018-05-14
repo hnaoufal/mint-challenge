@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+        #- run:
+        #  name: test
+        #  command: npm run test
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - deploy:
+         name: Deploy to Vultr
+         branch: "master"
+         command: |
+           if [ "${CIRCLE_BRANCH}" == "master" ]; then
+             sudo apt install rsync
+             ssh-keyscan -H -t rsa,dsa naoufal.de >> ~/.ssh/known_hosts
+             echo -e "Host 45.63.117.23\n\tStrictHostKeyChecking no\n\tPort 22\n\tUser root\n" >> ~/.ssh/config
+             npm run build
+             rsync -avz ./dist/assets/* root@naoufal.de:/var/www/ghost/app/
+             rsync -avz ./db.json root@naoufal.de:/var/www/ghost/jsonServer/db.json
+           fi
+

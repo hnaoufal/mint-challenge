@@ -1,0 +1,5 @@
+verbose: true
+instrumentation:
+  root: ./
+  include-all-sources: true
+  default-excludes: true

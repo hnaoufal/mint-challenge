@@ -1,0 +1,32 @@
+{
+  "parser": "babel-eslint",
+  "globals": {
+    "localStorage": true,
+      "document": true,
+      "Raven": true,
+      "describe": true,
+      "it": true
+  },
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["react", "jsx-a11y", "import", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "configurable": {
+        "cmp": "./src/components",
+        "act": "./src/actions",
+        "red": "./src/reducers",
+        "bsc": "./src/"
+      }
+    }
+  },
+  "rules": {
+    "no-console": [ "error", { "allow": ["warn", "error", "group", "info", "groupEnd"] }],
+    "max-len": ["error", 200],
+    "object-curly-spacing": ["error", "always", { objectsInObjects: false }],
+    "quotes": ["error", "single", { allowTemplateLiterals: true }],
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-filename-extension": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/no-noninteractive-tabindex": 0,
+  }
+}
